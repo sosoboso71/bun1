@@ -1,0 +1,330 @@
+ <!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Hyper Neon FX – Transparent Full Pack</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    background: transparent;
+    pointer-events: none;
+}
+
+.scene {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: transparent;
+}
+
+.active {
+    opacity: 1 !important;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* ============================================================
+   SCENA 1 – CURCUBEU GLOBAL
+   ============================================================ */
+.colorShift {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00, #ff6600);
+    background-size: 600% 600%;
+    filter: blur(40px);
+    animation: colorShiftFX 4s linear infinite;
+}
+@keyframes colorShiftFX {
+    0% { background-position: 0% 50%; opacity: 0.7; }
+    50% { background-position: 100% 50%; opacity: 1; }
+    100% { background-position: 0% 50%; opacity: 0.7; }
+}
+
+/* ============================================================
+   SCENA 2 – PULSURI DE CULOARE
+   ============================================================ */
+.colorPulse {
+    position: absolute;
+    inset: 0;
+    filter: blur(60px);
+    animation: colorPulseFX 3s linear infinite;
+}
+@keyframes colorPulseFX {
+    0% { background: radial-gradient(circle, rgba(255,0,0,0.8), transparent 70%); }
+    25% { background: radial-gradient(circle, rgba(0,255,255,0.8), transparent 70%); }
+    50% { background: radial-gradient(circle, rgba(255,255,0,0.8), transparent 70%); }
+    75% { background: radial-gradient(circle, rgba(0,255,0,0.8), transparent 70%); }
+    100% { background: radial-gradient(circle, rgba(255,0,255,0.8), transparent 70%); }
+}
+
+/* ============================================================
+   SCENE 3–5 – VORTEXURI
+   ============================================================ */
+.vortex1 {
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(#ff00ff 0deg 10deg, #00ffff 10deg 20deg);
+    filter: blur(40px);
+    animation: vortexSpin1 3s linear infinite;
+}
+@keyframes vortexSpin1 {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+    100% { transform: rotate(360deg) scale(1.5); opacity: 1; }
+}
+
+.vortex2 {
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(#ffff00 0deg 10deg, #00ff66 10deg 20deg);
+    filter: blur(50px);
+    animation: vortexSpin2 4s linear infinite;
+}
+@keyframes vortexSpin2 {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+    100% { transform: rotate(-360deg) scale(1.7); opacity: 1; }
+}
+
+.vortex3 {
+    position: absolute;
+    inset: 0;
+    background: repeating-conic-gradient(
+        #ff00ff 0deg 10deg,
+        #00ffff 10deg 20deg,
+        #ffff00 20deg 30deg,
+        #ff6600 30deg 40deg
+    );
+    filter: blur(60px);
+    animation: vortexSpin3 5s linear infinite;
+}
+@keyframes vortexSpin3 {
+    0% { transform: rotate(0deg) scale(1); opacity: 0.7; }
+    100% { transform: rotate(360deg) scale(2); opacity: 1; }
+}
+
+/* ============================================================
+   SCENA 6 – VALURI NEON
+   ============================================================ */
+.waves {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        rgba(255,0,255,0.8) 0px,
+        rgba(255,0,255,0.8) 20px,
+        rgba(0,0,0,0) 40px
+    );
+    filter: blur(40px);
+    animation: wavesFX 3s linear infinite;
+}
+@keyframes wavesFX {
+    0% { background-position: 0 0; opacity: 0.7; }
+    100% { background-position: 400px 400px; opacity: 1; }
+}
+
+/* ============================================================
+   SCENA 7 – CERCURI PULSANTE
+   ============================================================ */
+.circles {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle,
+        rgba(255,0,255,0.8),
+        rgba(0,255,255,0.8),
+        transparent 70%);
+    filter: blur(50px);
+    animation: circlesFX 2.5s ease-in-out infinite;
+}
+@keyframes circlesFX {
+    0% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.8); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.6; }
+}
+
+/* ============================================================
+   SCENA 8 – PLOAIE DIAGONALĂ
+   ============================================================ */
+.diag {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: radial-gradient(circle, #ffffff, #00ffff, #ff00ff, #ffff00);
+    border-radius: 50%;
+    filter: blur(3px);
+    animation: diagFall 1s linear infinite;
+}
+@keyframes diagFall {
+    0% { transform: translate(-80px, -80px) rotate(0deg); opacity: 1; }
+    100% { transform: translate(300px, 200vh) rotate(360deg); opacity: 0; }
+}
+
+/* ============================================================
+   SCENA 9 – EXPLOZIE RADIALĂ
+   ============================================================ */
+.radial {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #ffffff, #00ffff, #ff00ff, #ffff00);
+    border-radius: 50%;
+    filter: blur(4px);
+    animation: radialBoom 1.2s ease-out infinite;
+}
+@keyframes radialBoom {
+    0% { transform: translate(0,0) scale(0.3); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(2.5); opacity: 0; }
+}
+
+/* ============================================================
+   SCENA 10 – VALURI CIRCULARE (RIPPLE NEON RAPID)
+   ============================================================ */
+.ripple {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle,
+        rgba(255,0,255,0.8),
+        rgba(0,255,255,0.8),
+        transparent 70%);
+    filter: blur(50px);
+    animation: rippleFX 1.8s linear infinite;
+}
+@keyframes rippleFX {
+    0% { transform: scale(0.8); opacity: 0.6; }
+    50% { transform: scale(2.2); opacity: 1; }
+    100% { transform: scale(0.8); opacity: 0.6; }
+}
+
+/* ============================================================
+   SCENA 11 – PLASMĂ NEON FLUIDĂ
+   ============================================================ */
+.plasma1 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(255,0,255,0.6),
+        rgba(0,255,255,0.6),
+        rgba(255,255,0,0.6));
+    background-size: 300% 300%;
+    filter: blur(60px);
+    animation: plasmaFX1 6s ease-in-out infinite;
+}
+@keyframes plasmaFX1 {
+    0% { background-position: 0% 50%; opacity: 0.6; }
+    50% { background-position: 100% 50%; opacity: 1; }
+    100% { background-position: 0% 50%; opacity: 0.6; }
+}
+
+/* ============================================================
+   SCENA 12 – PLASMĂ NEON ENERGICĂ
+   ============================================================ */
+.plasma2 {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+        rgba(255,0,255,0.9),
+        rgba(0,255,255,0.9),
+        rgba(255,255,0,0.9));
+    background-size: 400% 400%;
+    filter: blur(70px);
+    animation: plasmaFX2 2.5s linear infinite;
+}
+@keyframes plasmaFX2 {
+    0% { background-position: 0% 0%; opacity: 0.7; }
+    100% { background-position: 200% 200%; opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div id="overlay">
+
+    <div class="scene scene1"></div>
+    <div class="scene scene2"></div>
+    <div class="scene scene3"></div>
+    <div class="scene scene4"></div>
+    <div class="scene scene5"></div>
+    <div class="scene scene6"></div>
+    <div class="scene scene7"></div>
+    <div class="scene scene8"></div>
+    <div class="scene scene9"></div>
+    <div class="scene scene10"></div>
+    <div class="scene scene11"></div>
+    <div class="scene scene12"></div>
+
+</div>
+
+<script>
+const scenes = document.querySelectorAll(".scene");
+let currentScene = 0;
+
+/* SCENE 1–7 (efecte mari) */
+document.querySelector(".scene1").appendChild(Object.assign(document.createElement("div"), { className: "colorShift" }));
+document.querySelector(".scene2").appendChild(Object.assign(document.createElement("div"), { className: "colorPulse" }));
+document.querySelector(".scene3").appendChild(Object.assign(document.createElement("div"), { className: "vortex1" }));
+document.querySelector(".scene4").appendChild(Object.assign(document.createElement("div"), { className: "vortex2" }));
+document.querySelector(".scene5").appendChild(Object.assign(document.createElement("div"), { className: "vortex3" }));
+document.querySelector(".scene6").appendChild(Object.assign(document.createElement("div"), { className: "waves" }));
+document.querySelector(".scene7").appendChild(Object.assign(document.createElement("div"), { className: "circles" }));
+
+/* SCENA 8 – PLOAIE DIAGONALĂ */
+for (let i = 0; i < 150; i++) {
+    const d = document.createElement("div");
+    d.className = "diag";
+    d.style.left = Math.random() * 100 + "%";
+    d.style.animationDelay = (Math.random() * -1) + "s";
+    document.querySelector(".scene8").appendChild(d);
+}
+
+/* SCENA 9 – EXPLOZIE RADIALĂ */
+for (let i = 0; i < 100; i++) {
+    const p = document.createElement("div");
+    p.className = "radial";
+    p.style.left = "50%";
+    p.style.top = "50%";
+    p.style.setProperty("--x", (Math.random() * 800 - 400) + "px");
+    p.style.setProperty("--y", (Math.random() * 800 - 400) + "px");
+    p.style.animationDelay = (Math.random() * -1.2) + "s";
+    document.querySelector(".scene9").appendChild(p);
+}
+
+/* SCENA 10 – RIPPLE NEON */
+document.querySelector(".scene10").appendChild(
+    Object.assign(document.createElement("div"), { className: "ripple" })
+);
+
+/* SCENA 11 – PLASMĂ FLUIDĂ */
+document.querySelector(".scene11").appendChild(
+    Object.assign(document.createElement("div"), { className: "plasma1" })
+);
+
+/* SCENA 12 – PLASMĂ ENERGICĂ */
+document.querySelector(".scene12").appendChild(
+    Object.assign(document.createElement("div"), { className: "plasma2" })
+);
+
+/* SCHIMBARE SCENE */
+function switchScene() {
+    scenes.forEach(s => s.classList.remove("active"));
+    scenes[currentScene].classList.add("active");
+    currentScene = (currentScene + 1) % scenes.length;
+}
+
+switchScene();
+setInterval(switchScene, 3500);
+</script>
+
+</body>
+</html>
